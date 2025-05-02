@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A Neural Network Mode for PX4 on Embedded Flight Controllers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+  <style>
+    body { padding: 2em; }
+    .section { margin-top: 2em; }
+    .link-block { margin: 0.5em 0.5em 0.5em 0; display: inline-block; }
+  </style>
+</head>
+<body>
+
+  <section class="section">
+    <h1 class="title is-3">A Neural Network Mode for PX4 on Embedded Flight Controllers</h1>
+    <figure class="image">
+      <img src="assets/img/nn_px4_arch.png" alt="Architecture">
+    </figure>
+
+    <h2 class="title is-4">Abstract</h2>
+    <p>
+      This paper contributes an open-sourced implementation of a neural-network based controller framework within the PX4 stack.
+      We develop a custom module for inference on the microcontroller while retaining all of the functionality of the PX4 autopilot.
+      Policies trained in the Aerial Gym Simulator are converted to the TensorFlow Lite format and then built together with PX4 and
+      flashed to the flight controller. The policies substitute the control-cascade within PX4 to offer an end-to-end position-setpoint
+      tracking controller directly providing normalized motor RPM setpoints. Experiments conducted in simulation and the real-world
+      show similar tracking performance. We thus provide a flight-ready pipeline for testing neural control policies in the real world.
+      The pipeline simplifies the deployment of neural networks on embedded flight controller hardware thereby accelerating research on
+      learning-based control.
+    </p>
+
+    <div class="section">
+      <span class="link-block">
+        <a href="https://arxiv.org/abs/2505.00432" class="external-link button is-normal is-rounded is-link">
+          <span class="icon"><i class="ai ai-arxiv"></i></span>
+          <span>Paper</span>
+        </a>
+      </span>
+      <span class="link-block">
+        <a href="https://youtu.be/lY1OKz_UOqM" class="external-link button is-normal is-rounded is-danger">
+          <span class="icon"><i class="fab fa-youtube"></i></span>
+          <span>Video</span>
+        </a>
+      </span>
+      <span class="link-block">
+        <a href="https://github.com/SindreMHegre/PX4-Autopilot-public/tree/for_paper" class="external-link button is-normal is-rounded is-dark">
+          <span class="icon"><i class="fab fa-github"></i></span>
+          <span>Code-PX4</span>
+        </a>
+      </span>
+      <span class="link-block">
+        <a href="https://ntnu-arl.github.io/aerial_gym_simulator/9_sim2real/" class="external-link button is-normal is-rounded is-dark">
+          <span class="icon"><i class="fab fa-github"></i></span>
+          <span>Code-Training</span>
+        </a>
+      </span>
+    </div>
+
+    <h2 class="title is-4">Video</h2>
+    <div class="video-container">
+      <iframe width="100%" height="400" src="https://www.youtube.com/embed/lY1OKz_UOqM" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <h2 class="title is-4">BibTeX</h2>
+    <pre><code>@misc{hegre2025neuralnetworkmodepx4,
+  title={A Neural Network Mode for PX4 on Embedded Flight Controllers}, 
+  author={Sindre M. Hegre and Welf Rehberg and Mihir Kulkarni and Kostas Alexis},
+  year={2025},
+  eprint={2505.00432},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+  url={https://arxiv.org/abs/2505.00432}, 
+}</code></pre>
+
+    <h2 class="title is-4">Acknowledgements</h2>
+    <p>This work was supported by the Horizon Europe Grant Agreement No. 101119774.</p>
+  </section>
+
+</body>
+</html>
