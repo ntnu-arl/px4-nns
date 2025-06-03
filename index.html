@@ -2,91 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>NTNU IE ToppForsk Group on Embodied AI</title>
+  <title>A Neural Network Mode for PX4 on Embedded Flight Controllers</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
   <style>
     body { padding: 2em; }
     .section { margin-top: 2em; }
     .link-block { margin: 0.5em 0.5em 0.5em 0; display: inline-block; }
-    table { width: 100%; margin-bottom: 2em; }
-    th, td { padding: 0.75em; vertical-align: top; border: 1px solid #ccc; }
-    th { background-color: #f5f5f5; }
-    iframe { max-width: 100%; }
   </style>
 </head>
 <body>
 
-<section class="section">
-  <h1 class="title is-3 has-text-centered">NTNU IE ToppForsk Group on Embodied AI</h1>
+  <section class="section">
+    <h1 class="title is-3 has-text-centered">A Neural Network Mode for PX4 on Embedded Flight Controllers</h1>
+    <div class="has-text-centered" style="margin-top: -1em; margin-bottom: 2em;">
+      <span class="author-block"><a href="mailto:sindrheg@stud.ntnu.no">Sindre M. Hegre</a>,</span>
+      <span class="author-block"><a href="mailto:welf.rehberg@ntnu.no">Welf Rehberg</a>,</span>
+      <span class="author-block"><a href="mailto:mihir.kulkarni@ntnu.no">Mihir Kulkarni</a>,</span>
+      <span class="author-block"><a href="mailto:konstantinos.alexis@ntnu.no">Kostas Alexis</a></span>
+    </div>
+    <div class="has-text-centered">
+      <img src="assets/img/nn_px4_arch.png" alt="Architecture" style="width: 100%; max-width: 600px; height: auto;">
+    </div>
 
-  <div class="has-text-centered" style="margin-bottom: 2em;">
-    <img src="assets/img/nn_px4_arch.png" alt="Architecture" style="width: 100%; max-width: 600px; height: auto;">
-  </div>
+    <h2 class="title is-4">Abstract</h2>
+    <p>
+      This paper contributes an open-sourced implementation of a neural-network based controller framework within the PX4 stack.
+      We develop a custom module for inference on the microcontroller while retaining all of the functionality of the PX4 autopilot.
+      Policies trained in the Aerial Gym Simulator are converted to the TensorFlow Lite format and then built together with PX4 and
+      flashed to the flight controller. The policies substitute the control-cascade within PX4 to offer an end-to-end position-setpoint
+      tracking controller directly providing normalized motor RPM setpoints. Experiments conducted in simulation and the real-world
+      show similar tracking performance. We thus provide a flight-ready pipeline for testing neural control policies in the real world.
+      The pipeline simplifies the deployment of neural networks on embedded flight controller hardware thereby accelerating research on
+      learning-based control.
+    </p>
 
-  <h2 class="title is-4">Leadership</h2>
-  <table class="table is-fullwidth is-bordered">
-    <tr>
-      <th>ToppForsk@IE Leader</th>
-      <th>Position</th>
-      <th>Affiliation</th>
-    </tr>
-    <tr>
-      <td><strong>Kostas Alexis</strong></td>
-      <td>Professor</td>
-      <td>IE, ITK, ARL</td>
-    </tr>
-  </table>
+    <div class="section">
+      <span class="link-block">
+        <a href="https://arxiv.org/abs/2505.00432" class="external-link button is-normal is-rounded is-link">
+          <span class="icon"><i class="ai ai-arxiv"></i></span>
+          <span>Paper</span>
+        </a>
+      </span>
+      <span class="link-block">
+        <a href="https://youtu.be/lY1OKz_UOqM" class="external-link button is-normal is-rounded is-danger">
+          <span class="icon"><i class="fab fa-youtube"></i></span>
+          <span>Video</span>
+        </a>
+      </span>
+      <span class="link-block">
+        <a href="https://github.com/SindreMHegre/PX4-Autopilot-public/tree/for_paper" class="external-link button is-normal is-rounded is-dark">
+          <span class="icon"><i class="fab fa-github"></i></span>
+          <span>Code-PX4</span>
+        </a>
+      </span>
+      <span class="link-block">
+        <a href="https://ntnu-arl.github.io/aerial_gym_simulator/9_sim2real/" class="external-link button is-normal is-rounded is-dark">
+          <span class="icon"><i class="fab fa-github"></i></span>
+          <span>Code-Training</span>
+        </a>
+      </span>
+    </div>
 
-  <h2 class="title is-4">Research Group Members</h2>
-  <table class="table is-fullwidth is-bordered">
-    <tr>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Affiliation</th>
-    </tr>
-    <tr><td><em>Kristin Y. Pettersen</em></td><td><em>Professor</em></td><td><em>ITK, IE, Snake Robotics Lab</em></td></tr>
-    <tr><td><em>Tor Arne Johansen</em></td><td><em>Professor</em></td><td><em>ITK, IE, UAV-Lab, SmallSat</em></td></tr>
-    <tr><td><em>Thor I. Fossen</em></td><td><em>Professor</em></td><td><em>ITK, IE, UAV-Lab</em></td></tr>
-    <tr><td><em>Annette Stahl</em></td><td><em>Professor</em></td><td><em>ITK, IE, Robotic Vision Group</em></td></tr>
-    <tr><td><em>Jan Tommy Gravdahl</em></td><td><em>Professor</em></td><td><em>ITK, IE, SmallSat</em></td></tr>
-    <tr><td><em>Torleiv Håland Bryne</em></td><td><em>Assoc. Professor</em></td><td><em>ITK, IE, UAV-Lab</em></td></tr>
-  </table>
+    <h2 class="title is-4">Video</h2>
+    <div class="has-text-centered">
+      <iframe style="max-width: 100%;" width="560" height="315" src="https://www.youtube.com/embed/lY1OKz_UOqM" frameborder="0" allowfullscreen></iframe>
+    </div>
 
-  <h2 class="title is-4">Abstract</h2>
-  <p>
-    Embodied AI is a scientific paradigm that seeks to understand and engineer intelligence as a product of the dynamic interplay between a physical body, its environment, and its computational control and learning systems. Unlike disembodied approaches to AI, Embodied AI emphasizes that intelligence arises through physical interaction with the world—mediated by morphology, perception, control, and learning—and must be studied and designed as an integrated whole.
-  </p>
+    <h2 class="title is-4">BibTeX</h2>
+    <pre><code>@misc{hegre2025neuralnetworkmodepx4,
+  title={A Neural Network Mode for PX4 on Embedded Flight Controllers}, 
+  author={Sindre M. Hegre and Welf Rehberg and Mihir Kulkarni and Kostas Alexis},
+  year={2025},
+  eprint={2505.00432},
+  archivePrefix={arXiv},
+  primaryClass={cs.RO},
+  url={https://arxiv.org/abs/2505.00432}, 
+}</code></pre>
+<pre><code>@article{kulkarni2025aerial,
+  title={Aerial gym simulator: A framework for highly parallelized simulation of aerial robots},
+  author={Kulkarni, Mihir and Rehberg, Welf and Alexis, Kostas},
+  journal={IEEE Robotics and Automation Letters},
+  year={2025},
+  publisher={IEEE}}, 
+}</code></pre>
 
-  <div class="section">
-    <span class="link-block">
-      <a href="https://www.autonomousrobotslab.com/" class="button is-link is-rounded">ARL</a>
-    </span>
-    <span class="link-block">
-      <a href="https://www.itk.ntnu.no/english/lab/unmanned" class="button is-primary is-rounded">UAV-Lab</a>
-    </span>
-    <span class="link-block">
-      <a href="https://robotnor.no/expertise/lab-facilities/snake-robotics-lab/" class="button is-warning is-rounded">Snake Lab</a>
-    </span>
-    <span class="link-block">
-      <a href="https://www.ntnu.edu/smallsat" class="button is-danger is-rounded">SmallSat Lab</a>
-    </span>
-  </div>
-
-  <h2 class="title is-4">Video Playlist</h2>
-  <div class="has-text-centered">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLu70ME0whad--Q9Ek1wkJyEJsDL7TgRUg" frameborder="0" allowfullscreen></iframe>
-  </div>
-
-  <h2 class="title is-4">Acknowledgements</h2>
-  <p>
-    Recognized as a Top Research group at the 
-    <a href="https://www.ntnu.no/ie/fakultet-for-informasjonsteknologi-matematikk-og-elektroteknikk">IE</a> 
-    Faculty of 
-    <a href="https://www.ntnu.edu/">NTNU</a> (ToppForsk@IE).
-  </p>
-</section>
+    <h2 class="title is-4">Acknowledgements</h2>
+    <p>This work was supported by the Horizon Europe Grant Agreement No. 101119774.</p>
+  </section>
 
 </body>
 </html>
